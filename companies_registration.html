@@ -1,0 +1,151 @@
+<!DOCTYPE html> 
+		<!--start html-->
+<html> 
+		
+	<!--HEAD START-->
+	<head> 
+			<title>Companies Dashboard</title> 	
+				<meta name="viewport" content="width=device-width, initial-scale=1"> 
+				<link rel="stylesheet" href="css/themes3/lightblue.min.css" />
+				<link rel="stylesheet" href="css/themes3/jquery.mobile.icons.min.css" />
+				<link rel="stylesheet" href="js/jquery.mobile.structure-1.4.5.min.css" />
+				<script src="js/jquery-1.11.1.min.js"></script>
+				<script src="js/jquery.mobile-1.4.5.min.js"></script>
+				<!-----validation jQuery ----->
+				<script type="text/javascript" src="js/validate.js"></script>
+				<!-- <link rel="stylesheet" type="text/css" href="css/validate.css"> -->
+				<script src="js/companies_reg.js"></script>
+				<script src="js/common.js"></script>
+				<!--<script type="text/javascript" charset="utf-8" src="cordova.js"></script>-->
+				
+			
+	</head>
+	 <body>
+	<!------- Register New Company--------->
+		<div id="reg_company" data-role="page">
+			<div data-role="header"> 
+				<h2> Add New Company </h2>
+				<a data-rel="back" data-transition="flip" data-direction="reverse" title="back" class="ui-btn ui-btn-left ui-corner-all ui-icon-back ui-btn-icon-notext" >Back</a>
+	  
+			</div><!--- page header ends---->
+			<div data-role="content">
+				<form id = "regcompany" method="post">
+					<fieldset class="ui-field-contain">
+						<label for="cpny_ct_type">Company Type </label>	
+						<select id="cpny_ct_type" name="cpny_ct_type" title="Select company type">
+							<option value=""></option>
+							<option value="IT">IT</option>
+							<option value="Manufacturing">Manufacturing</option>
+							<option value="Marketing">Marketing</option>
+						</select>
+					</fieldset> 
+					<fieldset class="ui-field-contain">
+						<label for="cpny_name">Company Name</label>
+						<input type='text' id="cpny_name" name="cpny_name" title="please fill the company Name" placeholder="company name">
+					</fieldset>
+					<fieldset class="ui-field-contain">
+						<label for="cpny_country">Country</label>	
+						<select id="cpny_country" name="cpny_country" title="Select country">
+							<option value=""></option>
+							<option value="india">India</option>
+							<option value="Pakistan">pakistan</option>
+							<option value="USA">USA</option>
+						</select>		
+					</fieldset>
+					<fieldset class="ui-field-contain">
+						<label for="cpny_state">state</label>		
+							<select id="cpny_state" name="cpny_state" title="Select state">
+							<option value=""></option>
+							<option value="Maharashtra">Maharashtra</option>
+							<option value="Goa">Goa</option>
+							<option value="Banglore">Banglore</option>
+						</select>		
+					</fieldset>
+					<fieldset class="ui-field-contain">
+						<label for="cpny_city">city</label>	
+						<select id="cpny_city" name="cpny_city" title="Select city">
+							<option value=""></option>
+							<option value="Mumbai">Mumbai</option>
+							<option value="Pune">Pune</option>
+							<option value="Nashik">Nashik</option>
+						</select>		
+					</fieldset>
+					<fieldset class="ui-field-contain">
+						<label for="cpny_pin">pin</label>	
+							<select id="cpny_pin" name="cpny_pin" title="Select pin">
+							<option value=""></option>
+							<option value="400014">400014</option>
+							<option value="423401">423401</option>
+							<option value="423402">423402</option>
+						</select>		
+					</fieldset>
+					<fieldset class="ui-field-contain">
+						<label for="cpny_add1">Company Address1</label>
+						<input type="text" id="cpny_add1" name="cpny_add1" placeholder="Company Address" title="pls! enter Company Address">
+					</fieldset>
+					<fieldset class="ui-field-contain">
+						<label for="cpny_add2">Company Address2</label>		
+						<input type="text" id="cpny_add2" name="cpny_add2" placeholder="Company Address" title="pls! enter Company Address">
+					</fieldset>
+					<fieldset class="ui-field-contain">
+						<label for="cpny_contact">Contact</label>
+						<input type="text" id="cpny_contact" name="cpny_contact" placeholder="022-65845451" title="pls! enter Contact">
+					</fieldset>
+					<fieldset class="ui-field-contain">
+						<label for="cpny_mobile">Mobile</label>	
+						<input type="text" id="cpny_mobile" name="cpny_mobile" placeholder="9844448454" title="pls! enter Mobile">
+					</fieldset>
+					<fieldset class="ui-field-contain">
+						<label for="cpny_website">Website</label>
+						<input type="text" id="cpny_website" name="cpny_website" placeholder="http://www.example.com" title="pls! Enter Website">
+					</fieldset>
+					<fieldset class="ui-field-contain">
+						<label for="cpny_email"> Email </label>
+						<input type="text" id="cpny_email" name="cpny_email" placeholder="example@xyz.com" title="pls! Enter email">
+					</fieldset>
+					<fieldset class="ui-field-contain">
+						<label for="cpny_branches">Company Branches</label>	
+						<fieldset data-role="controlgroup" data-type="horizontal"  id ="cpny_branches">
+							<input type="radio" id ="cpny_branches_y" name="cpny_branches" value="Y" ><label for= "cpny_branches_y" > YES </label>
+							<input type="radio" id ="cpny_branches_n" name="cpny_branches" value="N" checked ><label for="cpny_branches_n"> NO </label>
+						</fieldset> 
+					</fieldset>
+					<div id="branches">
+						<fieldset class="ui-field-contain">
+							<label for="cpny_branch1"> branch 1 </label>
+							<input type="text" id="cpny_branch1" name="cpny_branch1" placeholder="branch 1 " title="">
+						</fieldset>
+						<fieldset class="ui-field-contain">
+							<label for="cpny_branch2"> branch 2 </label>
+							<input type="text" id="cpny_branch2" name="cpny_branch2" placeholder="branch 2 " title="">
+						</fieldset>
+					</div>
+					<fieldset class="ui-field-contain">
+						<label for="cpny_profile"> Company Profile</label>
+							<textarea type="text" id="cpny_profile" name="cpny_profile"> </textarea>
+					</fieldset>
+					<fieldset class="ui-field-contain">
+							<label for="cpny_user_email"> user Email</label>
+							<input type="text" id="cpny_user_email" name="cpny_user_email"  placeholder="example@xyz.com" title="pls! Enter email">
+						</fieldset>
+					<fieldset class="ui-field-contain">
+							<label for="usr_password"> password</label>
+							<input type="password" id="usr_password" name="usr_password" placeholder="Password" title="Pls ! enter Password ">
+						</fieldset>
+						<fieldset class="ui-field-contain">
+							<label for="confusr_password"> comfirm password </label>
+							<input type="password" id="confusr_password" name="confusr_password" placeholder="confirm password " title="Entered password not same">
+						</fieldset>
+					<input type="submit" id="submit" name="submit" data-inline="true" value="Submit" data-ajax="false">
+					<input type="reset" id="reset" name="reset" data-inline="true" value="Reset" data-ajax="false">
+					<input type="button" id="Cancel" name="Cancel" data-inline="true" value="Cancel" data-ajax="false">
+				</form>
+			</div><!--- page content ends---->
+			<div data-role="footer" data-position="fixed">
+				<h2>
+					copyrights @ Lewis
+				</h2>
+			</div><!--- page footer ends---->
+		</div><!----End page---->
+	</body>	
+</html>

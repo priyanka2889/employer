@@ -1,0 +1,681 @@
+<!DOCTYPE html> 
+		<!--start html-->
+<html>
+	<!--HEAD START-->
+	<head> 
+			<title>Companies Dashboard</title> 	
+				<meta name="viewport" content="width=device-width, initial-scale=1"> 
+				
+				<link rel="stylesheet"  href="css/dist/jqm-icon-pack-fa.css" />
+				<link rel="stylesheet" href="css/themes3/lightblue.min.css" />
+				<link rel="stylesheet" href="css/themes3/jquery.mobile.icons.min.css" />
+				<link rel="stylesheet" href="js/jquery.mobile.structure-1.4.5.min.css" />
+				<script src="js/jquery-1.11.1.min.js"></script>
+				<script src="js/jquery.mobile-1.4.5.min.js"></script>
+				<!-----validation jQuery ----->
+				<script type="text/javascript" src="js/validate.js"></script>
+				<link rel="stylesheet" type="text/css" href="css/validate.css">		
+				<script src="js/common.js"></script>
+				<link rel="stylesheet" href="css/pagination.css" />
+				<script type="text/javascript" src="js/listPagination.js"></script>
+				<script src="js/typingevent.js"></script>
+				<link rel="stylesheet" href="css/recruiter_dashboard.css" />
+				<script type="text/javascript" src="js/recruiter_dashboard.js"></script>
+				<script type="text/javascript" src="js/uploadimage.js"></script>
+				<!-------confirmation box------->
+		<script type="text/javascript" src="js/jquery.alerts.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/jquery.alerts.css">
+				<!--<script type="text/javascript" charset="utf-8" src="cordova.js"></script>-->
+	</head>
+		<style>
+		
+	
+</style>
+		
+	 <body onload="init();">
+		<!-----companies list ----->
+		<div id="dashboard" data-role="page">
+				
+			<div data-role="header" class="header"> 
+			<a href="#left_panel" data-transition="slide"  data-direction="reverse" class="ui-btn ui-btn-b ui-btn-left ui-corner-all ui-icon-bars ui-btn-icon-notext" data-ajax="false">Bar</a>
+				<h2> Companies  </h2>
+				<div class="ui-btn-right" id="user" data-role="" data-type="horizontal" class="ui-corner-all" style="color:white; font-weight:normal; margin-top:10px;">
+				 username
+				</div>
+			</div><!--- page header ends---->
+			<input type="hidden" id="Id" size="50" name="Id"> 
+			<!--- panel---->
+			<div data-role="panel" id="left_panel" data-theme="b" >
+			 <div> <h4>Recruiter Dashboard</h4> </div>
+			 <div>  
+			     <ul data-role="listview">
+				   <li data-icon="false">
+					<div class="img-preview" >
+					<img src="" alt="Profile Pic" id="profilePic" style="height:100px;width:100px;" ></div>
+					<form class="frmUpload" action="" method="post" enctype="multipart/form-data" >
+					<input type="hidden" id="imgId" size="30" name="imgId" value=""/> 
+					<input type="hidden" id="serverUrl" type="html" value="http://lewistechnologies.in/upload.php" />
+					<span class="fileinput-button">
+					<a onclick="selectPicture();" class="ui-btn ui-icon-arrow-u ui-btn-icon-notext ui-corner-all">upload</a>
+					<!--<input type="file"  name="userImage" id="userImage" data-role="none" title="upload file" data-ajax="false" accept=".jpg"  required />--></span>
+					</form>
+					</li>
+					<li data-rel="close"><a href="#dashboard" data-transition="slide" class="ui-btn ui-shadow  ui-icon-none " >Dashboard</a></li>
+					<li data-rel="close"><a href="#post_job" data-transition="slide" class="ui-btn ui-shadow  ui-icon-none " >Post Jobs </a></li>
+					<li><a href="#" id="Jobs"  class="ui-btn ui-shadow ui-icon-carat-d ui-btn-icon-right"  >Jobs</a></li>
+					<div id="jobType" class="hidden">
+					  <ul data-role="listview" >
+					  <li><a id="posted"class="ui-btn ui-shadow  ui-icon-none" data-transition="slide" data-ajax="false">Posted Jobs</a></li>
+					  <li><a id="saved" class="ui-btn ui-shadow  ui-icon-none" data-transition="slide"  data-ajax="false" >Saved Jobs</a></li>
+					  </ul>
+					</div>
+					<li data-rel="close"><a href="#" id="applied" data-transition="slide" class="ui-btn ui-shadow   ui-icon-none ">Applied</a></li>
+					<li data-rel="close"><a href="#edit_profile" data-transition="slide" class="ui-btn ui-shadow   ui-icon-none ">Edit Profile</a></li>
+					<li><a href="#" id="logout"  data-ajax="false" class="ui-btn ui-shadow  ui-icon-none "  >Logout</a></li>
+				 </ul>
+			  </div>
+			
+			</div><!--close panel--->
+			
+			<div data-role="content">
+			  <div class="container">
+					<ul>
+				
+					<a href="#" id="dashposted"><div class="ui-badge-container ui-icon-none"><img src="img/posted.png" alt="Posted Jobs" title="Posted Jobs" width="80px" height="80px">
+					<span class="badge" id="postedcount"></span>Posted Jobs</div></a></li>
+					
+						<a href="#" id="dashsaved"><div class="ui-badge-container ui-icon-none"><img src="img/saved.png" alt="Saved Jobs" title="Saved Jobs" width="80px" height="80px">
+					<span class="badge" id="savedcount"></span>Saved Jobs
+						
+					</div></a>
+					<a href="#post_job" id="post_a_job"><div class="ui-badge-container"><img src="img/post_a_job.gif" alt="Post a Job" title="Post a Job" width="80px" height="80px">
+					Post a Job
+					<span id="savedcount"></div></a>
+					
+					
+					
+					</ul>
+			
+			  </div>
+	 		</div><!--- page content ends---->
+		</div><!----page---->
+		<div id="post_job" data-role="page">
+		   <div data-role="header"> 
+			 <a href="#" data-rel="back" data-transition="slide"  class="ui-btn ui-btn-b ui-btn-left ui-corner-all ui-icon-back ui-btn-icon-notext" data-ajax="false">Back</a>
+				<h2> post job  </h2>
+				
+			</div><!--- page header ends---->
+				
+				<div data-role="content">
+						<form name="jobs_post" id="jobs_post" method="post">
+						   <fieldset class="ui-field-contain">
+							<!--<label for="Id">Job Id</label> -->
+							<input type="hidden" id="Id" size="50" name="Id"> 
+							</fieldset> 
+						<fieldset class="ui-field-contain">
+						<!--<label for="job_jt_type_id">job_type_Id </label> -->
+						<input type="hidden" id="user_id" size="50" name="user_id"> 
+						<input type="hidden" id="job_cmpny_name" size="50" name="job_cmpny_name"> 
+						</fieldset> 
+							<fieldset class="ui-field-contain">
+							  <label for="job_jt_type">Job Type</label>
+								<select id = "job_jt_type" name="job_jt_type" size="1" />
+								<option value=""></option>
+								</select>
+						    </fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="job_title">Job Title</label>
+								<input type="text" id="job_title" size="50" name="job_title" value="" /> 
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="job_description">job Description</label> 
+								<textarea id="job_description" size="1000" name="job_description" ></textarea> 
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="job_keywords">Keyskills</label>
+								<input type="text" id="job_keywords" size="50" name="job_keywords" value="" /> 
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="job_min_exp">Minimum Experience(yr.)</label>
+								<select id = "job_min_exp" name="job_min_exp" size="1"/>
+								<option value="" >select minimum Experience</option>
+								<option value="0">0</option><option value="1" >1</option>
+								<option value="2">2</option><option value="3" >3</option>
+								<option value="4" >4</option><option value="5" >5</option>
+								<option value="6" >6</option><option value="7" >7</option>
+								<option value="8" >8</option><option value="9" >9</option>
+								<option value="10" >10</option><option value="11" >11</option>
+								<option value="12" >12</option><option value="13" >13</option>
+								<option value="14" >14</option><option value="15" >15</option>
+								<option value="16" >16</option><option value="17" >17</option>
+								<option value="18" >18</option><option value="19" >19</option>
+								<option value="20" >20</option><option value="21" >21</option>
+								<option value="22" >22</option><option value="23" >23</option>
+								<option value="24" >24</option><option value="25" >25</option>
+								<option value="26" >26</option><option value="27" >27</option>
+								<option value="28" >28</option><option value="29" >29</option>
+								<option value="30" >30</option>
+							</select>
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="job_max_exp">Maximum Experience(yr.)</label>
+							<select id = "job_max_exp" name="job_max_exp" size="1"/>
+								<option value="" >select maximum Experience</option>
+								<option value="0">0</option><option value="1" >1</option>
+								<option value="2">2</option><option value="3" >3</option>
+								<option value="4" >4</option><option value="5" >5</option>
+								<option value="6" >6</option><option value="7" >7</option>
+								<option value="8" >8</option><option value="9" >9</option>
+								<option value="10" >10</option><option value="11" >11</option>
+								<option value="12" >12</option><option value="13" >13</option>
+								<option value="14" >14</option><option value="15" >15</option>
+								<option value="16" >16</option><option value="17" >17</option>
+								<option value="18" >18</option><option value="19" >19</option>
+								<option value="20" >20</option><option value="21" >21</option>
+								<option value="22" >22</option><option value="23" >23</option>
+								<option value="24" >24</option><option value="25" >25</option>
+								<option value="26" >26</option><option value="27" >27</option>
+								<option value="28" >28</option><option value="29" >29</option>
+								<option value="30" >30</option>
+							</select>
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="job_ctc_type">CTC Type</label>
+								<select id = "job_ctc_type" name="job_ctc_type" size="1" data-native-menu="false"/>
+								<option value="" >Select type</option>
+								<option value="Rs" >Rs</option>
+								<option value="$" >$</option>
+								<option value="Euro" >Euro</option>
+								</select>
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="job_min_ctc">Minimum CTC(in thousand)</label>
+								<select id = "job_min_ctc" name="job_min_ctc" size="1"/>
+								<option value="" >select minimum CTC</option>
+								<option value="0">0</option><option value="1" >1</option>
+								<option value="2">2</option><option value="3" >3</option>
+								<option value="4" >4</option><option value="5" >5</option>
+								<option value="6" >6</option><option value="7" >7</option>
+								<option value="8" >8</option><option value="9" >9</option>
+								<option value="10" >10</option><option value="11" >11</option>
+								<option value="12" >12</option><option value="13" >13</option>
+								<option value="14" >14</option><option value="15" >15</option>
+								<option value="16" >16</option><option value="17" >17</option>
+								<option value="18" >18</option><option value="19" >19</option>
+								<option value="20" >20</option><option value="21" >21</option>
+								<option value="22" >22</option><option value="23" >23</option>
+								<option value="24" >24</option><option value="25" >25</option>
+								<option value="26" >26</option><option value="27" >27</option>
+								<option value="28" >28</option><option value="29" >29</option>
+								<option value="30" >30</option><option value="31">31</option>
+								<option value="32">32</option><option value="33">33</option>
+								<option value="34">34</option><option value="35">35</option>
+								<option value="36">36</option><option value="37">37</option>
+								<option value="38">38</option><option value="39">39</option>
+								<option value="40">40</option><option value="41">41</option>
+								<option value="42">42</option><option value="43">43</option>
+								<option value="44">44</option><option value="45">45</option>
+								<option value="46">46</option><option value="47">47</option>
+								<option value="48">48</option><option value="49">49</option>
+								<option value="50">50</option>
+								
+								
+								</select>
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="job_max_ctc">Maximum CTC(in thousand)</label>
+								<select id = "job_max_ctc" name="job_max_ctc" size="1"/>
+								<option value="" >select maximum CTC</option>
+								<option value="0">0</option><option value="1" >1</option>
+								<option value="2">2</option><option value="3" >3</option>
+								<option value="4" >4</option><option value="5" >5</option>
+								<option value="6" >6</option><option value="7" >7</option>
+								<option value="8" >8</option><option value="9" >9</option>
+								<option value="10" >10</option><option value="11" >11</option>
+								<option value="12" >12</option><option value="13" >13</option>
+								<option value="14" >14</option><option value="15" >15</option>
+								<option value="16" >16</option><option value="17" >17</option>
+								<option value="18" >18</option><option value="19" >19</option>
+								<option value="20" >20</option><option value="21" >21</option>
+								<option value="22" >22</option><option value="23" >23</option>
+								<option value="24" >24</option><option value="25" >25</option>
+								<option value="26" >26</option><option value="27" >27</option>
+								<option value="28" >28</option><option value="29" >29</option>
+								<option value="30" >30</option><option value="31">31</option>
+								<option value="32">32</option><option value="33">33</option>
+								<option value="34">34</option><option value="35">35</option>
+								<option value="36">36</option><option value="37">37</option>
+								<option value="38">38</option><option value="39">39</option>
+								<option value="40">40</option><option value="41">41</option>
+								<option value="42">42</option><option value="43">43</option>
+								<option value="44">44</option><option value="45">45</option>
+								<option value="46">46</option><option value="47">47</option>
+								<option value="48">48</option><option value="49">49</option>
+								<option value="50">50</option>
+								</select>
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label>CTC Status</label>
+								<fieldset data-role="controlgroup" data-mini="true" data-type="horizontal">
+								<input name="job_ctc_hide" id="job_ctc_hide_yes" value="1" type="radio">
+								<label for="job_ctc_hide_yes">Yes</label>
+								<input name="job_ctc_hide" id="job_ctc_hide_no" value="0" type="radio">
+								<label for="job_ctc_hide_no">No</label>
+								</fieldset>
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="job_ctc_other">Other CTC</label>
+								<input type="text" id="job_ctc_other" size="50" name="job_ctc_other" value="" /> 
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="job_no_of_vacancy">No.Of Vacancy</label>
+								<input type="text" id="job_no_of_vacancy" size="50" name="job_no_of_vacancy" value="" /> 
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="job_location">Location</label>
+								<input type="text" id="job_location" size="50" name="job_location" value="" /> 
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="job_UG_qualification">UG Qualification</label>
+								<select id = "job_UG_qualification" name="job_UG_qualification" size="1"/></select>
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="job_PG_qualification">PG Qualification</label>
+								<select id = "job_PG_qualification" name="job_PG_qualification" size="1"/></select>
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="job_qualification_other">Other Qualification</label>
+								<select id = "job_qualification_other" name="job_qualification_other" size="1"/></select>
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="job_candidate_profile">Candidate Profile</label> 
+								<textarea id="job_candidate_profile" size="1000" name="job_candidate_profile" ></textarea> 
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="job_about_company">Company Profile</label> 
+								<textarea id="job_about_company" size="1000" name="job_about_company" ></textarea> 
+							</fieldset>
+							<fieldset class="ui-field-contain">
+							<label for="job_about_company"></label> 
+						   <input type="submit" id="postjob" data-inline="true" data-theme="b" name="postjob" value="Post Job" class="ui-btn ui-shadow ui-corner-all ui-btn-b ui-btn-inline">
+						   <input type="submit" id="savejob" data-inline="true" data-theme="b" name="savejob" value="Save" class="ui-btn ui-shadow ui-corner-all ui-btn-b ui-btn-inline ">
+						   <input type="reset" id="" data-inline="true" data-theme="b"  name="" value="cancel" class="ui-btn ui-shadow ui-corner-all ui-btn-b ui-btn-inline ">
+						   </fieldset>
+						</form>
+					</div>
+	      	</div><!--page Ends-->
+			
+				<!-----posted Jobs----->
+			<div id="posted_jobs" data-role="page">
+				<div data-role="header"> 
+					<a href="#dashboard" data-transition="slide"  class="ui-btn ui-btn-b ui-btn-left ui-corner-all ui-icon-back ui-btn-icon-notext" data-ajax="false">Bar</a>
+					<h2> posted job  </h2>
+				   <div id="" class="searchText hidden">
+				  <input type="text" name="search" id="posted_job_text" value=""  placeholder="Search.." data-mini="true" data-inline="true" data-type="search" class="search" /></div>
+				  <div class="ui-btn-right" ><a href="#" class="searchbtn ui-btn ui-btn-b ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-notext" >search</a>
+				  </div>
+				 </div><!--- page header ends---->
+				<div data-role="content">
+					<ul data-role="listview"  id="jobs_list"></ul></div><!-- /content -->
+			
+			</div><!--page Ends-->
+			
+				<!-----saved Jobs----->
+			<div id="saved_jobs" data-role="page">
+				<div data-role="header"> 
+					<a href="#dashboard" data-transition="slide"  class="ui-btn ui-btn-b ui-btn-left ui-corner-all ui-icon-back ui-btn-icon-notext" data-ajax="false">Bar</a>
+					<h2> saved job  </h2>
+				   <div id="" class="searchText hidden">
+				<input type="text" name="search" id="saved_job_text" value=""  placeholder="Search.." data-mini="true" data-inline="true" data-type="search" class="search" /></div>
+				<div class="ui-btn-right" ><a href="#" class="searchbtn ui-btn ui-btn-b ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-notext" >search</a>
+				</div>
+				</div><!--- page header ends---->
+				<div data-role="content">
+					<ul data-role="listview"  id="saved_jobs_list"></ul></div><!-- /content -->
+			
+			</div><!--page Ends-->
+			
+			<!-----Applied Jobs----->
+			<div id="job_applied" data-role="page">
+				<div data-role="header"> 
+					<a href="#dashboard" data-transition="slide"  class="ui-btn  ui-btn-b ui-btn-left ui-corner-all ui-icon-back ui-btn-icon-notext" data-ajax="false">Bar</a>
+					<h2> Applied job  </h2>
+				   <div id="" class="searchText hidden">
+				<input type="text" name="search" id="applied_job_text" value=""  placeholder="Search.." data-mini="true" data-inline="true" data-type="search" class="search" /></div>
+				<div class="ui-btn-right" ><a href="#" class="searchbtn ui-btn ui-btn-b ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-notext" >search</a>
+				</div>
+				</div><!--- page header ends---->
+				<div data-role="content">
+					<ul data-role="listview" id="job_applied_list"></ul></div><!-- /content -->
+			</div><!--page Ends-->
+			
+           	<div id="candylist" data-role="page">
+				<div data-role="header"> 
+					<a href="#job_applied"  class="ui-btn ui-btn-b ui-btn-left ui-corner-all ui-icon-back ui-btn-icon-notext" >Back</a>
+					<h2> candidate list </h2>
+				 <div id="" class="searchText hidden">
+				<input type="text" name="search" id="candidate_name_text" value=""  placeholder="Search.." data-mini="true" data-inline="true" data-type="search" class="search" /></div>
+				<div class="ui-btn-right" ><a href="#" class="searchbtn ui-btn ui-btn-b ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-notext" >search</a>
+				</div>
+				</div><!--- page header ends---->
+				<div r<div data-role="content">
+					<ul data-role="listview" data-split-icon ="delete" id="appliedCandidate_list"></ul></div><!-- /content -->
+			
+			</div><!--page Ends-->
+			
+		<!-----Job PROFILE PAGE ------>
+		<div data-role="page"  id="job_profile">
+			<div data-role="header" data-theme="a">
+				<!--<button id="back_teacher" data-theme="a">Back</button>--->
+				<a href="#dashboard" title="Back" class="ui-btn ui-btn-b ui-btn-left ui-corner-all ui-icon-back ui-btn-icon-notext">Back</a>
+                <h1>Profile</h1>
+				<!--<a href="#studnt_form_edit" id="student_edit" data-theme="a">Edit</a>-->
+				<a href="" data-id="" id="edit" title="Edit" class="ui-btn ui-btn-b ui-btn-right ui-corner-all ui-icon-edit ui-btn-icon-notext" data-transition="slide">Edit</a>
+			</div><!-- /header -->
+			<div data-role="content">
+				<div data-role="collapsibleset" data-theme="c" data-content-theme="a">
+					<div data-role="collapsible" data-collapsed="false">
+						<h3>Basic Information</h3>
+							<ul data-role="listview"  data-inset="true" id="job_basic">	
+							</ul>
+					</div>
+					<div data-role="collapsible">
+						<h3>Job Description</h3>
+							<ul data-role="listview"  data-inset="true" id="job_desc">	
+							</ul>
+					</div>
+					<div data-role="collapsible">
+						<h3>Candidate Profile</h3>
+							<ul data-role="listview"  data-inset="true" id="job_candt_profile">	
+							</ul>
+					</div>
+					<div data-role="collapsible">
+						<h3>Company Profile</h3>
+							<ul data-role="listview"  data-inset="true" id="comp_profile">	
+							</ul>
+					</div>
+					<div id="postbtn" class="hidden">
+					<a id="postthis" data-id="" class="ui-btn ui-btn-inline ">Post</a>
+					</div>
+				</div>
+			</div><!-- /CONTENT -->
+		</div><!----/PROFILE PAGE-->
+		
+		
+		<!----EDITING Jobs DETAILS------>
+		<div data-role="page" id="edit_job">
+			<div data-role="header">
+					<h1>Job Edit Form</h1>
+					<a href="#" data-rel="back" data-icon="delete" class="ui-btn-right ui-btn-b ui-btn-icon-notext " >close_edit</a>	
+			</div>	
+			<div data-role="content" >
+					<!------EDITING STUDENT------->
+					<div id="edit_job_form">
+						<form name="job_edit_form" id="job_edit_form" method="post">	
+								<fieldset class="ui-field-contain">
+							<input type="hidden" id="edit_Id" size="50" name="job_Id"> 
+							</fieldset> 
+  						<fieldset class="ui-field-contain">
+								<label for="edit_job_jt_type">Job Type</label>
+								<select id = "edit_job_jt_type" name="edit_job_jt_type" size="1"/>
+								<option value=""></option>
+								</select>
+						</fieldset>
+						
+							<fieldset class="ui-field-contain">
+								<label for="edit_job_title">Job Title</label>
+								<input type="text" id="edit_job_title" size="50" name="edit_job_title" value="" /> 
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="edit_job_description">job Description</label> 
+								<textarea id="edit_job_description" size="1000" name="edit_job_description" ></textarea> 
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="edit_job_keywords">Keyskills</label>
+								<input type="text" id="edit_job_keywords" size="50" name="edit_job_keywords" value="" /> 
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="edit_job_min_exp">Minimum Experience(yr.)</label>
+								<select id = "edit_job_min_exp" name="edit_job_min_exp" size="1"/>
+								<option value="" >select minimum Experience</option>
+								<option value="0">0</option><option value="1" >1</option>
+								<option value="2">2</option><option value="3" >3</option>
+								<option value="4" >4</option><option value="5" >5</option>
+								<option value="6" >6</option><option value="7" >7</option>
+								<option value="8" >8</option><option value="9" >9</option>
+								<option value="10" >10</option><option value="11" >11</option>
+								<option value="12" >12</option><option value="13" >13</option>
+								<option value="14" >14</option><option value="15" >15</option>
+								<option value="16" >16</option><option value="17" >17</option>
+								<option value="18" >18</option><option value="19" >19</option>
+								<option value="20" >20</option><option value="21" >21</option>
+								<option value="22" >22</option><option value="23" >23</option>
+								<option value="24" >24</option><option value="25" >25</option>
+								<option value="26" >26</option><option value="27" >27</option>
+								<option value="28" >28</option><option value="29" >29</option>
+								<option value="30" >30</option>
+							</select>
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="edit_job_max_exp">Maximum Experience(yr.)</label>
+							<select id = "edit_job_max_exp" name="edit_job_max_exp" size="1"/>
+								<option value="" >select maximum Experience</option>
+								<option value="0">0</option><option value="1" >1</option>
+								<option value="2">2</option><option value="3" >3</option>
+								<option value="4" >4</option><option value="5" >5</option>
+								<option value="6" >6</option><option value="7" >7</option>
+								<option value="8" >8</option><option value="9" >9</option>
+								<option value="10" >10</option><option value="11" >11</option>
+								<option value="12" >12</option><option value="13" >13</option>
+								<option value="14" >14</option><option value="15" >15</option>
+								<option value="16" >16</option><option value="17" >17</option>
+								<option value="18" >18</option><option value="19" >19</option>
+								<option value="20" >20</option><option value="21" >21</option>
+								<option value="22" >22</option><option value="23" >23</option>
+								<option value="24" >24</option><option value="25" >25</option>
+								<option value="26" >26</option><option value="27" >27</option>
+								<option value="28" >28</option><option value="29" >29</option>
+								<option value="30" >30</option>
+							</select>
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="edit_job_ctc_type">CTC Type</label>
+								<select id = "edit_job_ctc_type" name="edit_job_ctc_type" size="1" data-native-menu="false"/>
+								<option value="" >Select type</option>
+								<option value="Rs" >Rs</option>
+								<option value="$" >$</option>
+								<option value="Euro" >Euro</option>
+								</select>
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="edit_job_min_ctc">Minimum CTC(in thousand)</label>
+								<select id = "edit_job_min_ctc" name="edit_job_min_ctc" size="1"/>
+								<option value="" >select minimum CTC</option>
+								<option value="0">0</option><option value="1" >1</option>
+								<option value="2">2</option><option value="3" >3</option>
+								<option value="4" >4</option><option value="5" >5</option>
+								<option value="6" >6</option><option value="7" >7</option>
+								<option value="8" >8</option><option value="9" >9</option>
+								<option value="10" >10</option><option value="11" >11</option>
+								<option value="12" >12</option><option value="13" >13</option>
+								<option value="14" >14</option><option value="15" >15</option>
+								<option value="16" >16</option><option value="17" >17</option>
+								<option value="18" >18</option><option value="19" >19</option>
+								<option value="20" >20</option><option value="21" >21</option>
+								<option value="22" >22</option><option value="23" >23</option>
+								<option value="24" >24</option><option value="25" >25</option>
+								<option value="26" >26</option><option value="27" >27</option>
+								<option value="28" >28</option><option value="29" >29</option>
+								<option value="30" >30</option><option value="31">31</option>
+								<option value="32">32</option><option value="33">33</option>
+								<option value="34">34</option><option value="35">35</option>
+								<option value="36">36</option><option value="37">37</option>
+								<option value="38">38</option><option value="39">39</option>
+								<option value="40">40</option><option value="41">41</option>
+								<option value="42">42</option><option value="43">43</option>
+								<option value="44">44</option><option value="45">45</option>
+								<option value="46">46</option><option value="47">47</option>
+								<option value="48">48</option><option value="49">49</option>
+								<option value="50">50</option>
+								
+								
+								</select>
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="edit_job_max_ctc">Maximum CTC(in thousand)</label>
+								<select id = "edit_job_max_ctc" name="edit_job_max_ctc" size="1"/>
+								<option value="" >select maximum CTC</option>
+								<option value="0">0</option><option value="1" >1</option>
+								<option value="2">2</option><option value="3" >3</option>
+								<option value="4" >4</option><option value="5" >5</option>
+								<option value="6" >6</option><option value="7" >7</option>
+								<option value="8" >8</option><option value="9" >9</option>
+								<option value="10" >10</option><option value="11" >11</option>
+								<option value="12" >12</option><option value="13" >13</option>
+								<option value="14" >14</option><option value="15" >15</option>
+								<option value="16" >16</option><option value="17" >17</option>
+								<option value="18" >18</option><option value="19" >19</option>
+								<option value="20" >20</option><option value="21" >21</option>
+								<option value="22" >22</option><option value="23" >23</option>
+								<option value="24" >24</option><option value="25" >25</option>
+								<option value="26" >26</option><option value="27" >27</option>
+								<option value="28" >28</option><option value="29" >29</option>
+								<option value="30" >30</option><option value="31">31</option>
+								<option value="32">32</option><option value="33">33</option>
+								<option value="34">34</option><option value="35">35</option>
+								<option value="36">36</option><option value="37">37</option>
+								<option value="38">38</option><option value="39">39</option>
+								<option value="40">40</option><option value="41">41</option>
+								<option value="42">42</option><option value="43">43</option>
+								<option value="44">44</option><option value="45">45</option>
+								<option value="46">46</option><option value="47">47</option>
+								<option value="48">48</option><option value="49">49</option>
+								<option value="50">50</option>
+								</select>
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label>CTC Status</label>
+								<fieldset data-role="controlgroup" data-mini="true" data-type="horizontal">
+								<input name="edit_job_ctc_hide" id="edit_job_ctc_hide_yes" value="1" type="radio">
+								<label for="edit_job_ctc_hide_yes">Yes</label>
+								<input name="edit_job_ctc_hide" id="edit_job_ctc_hide_no" value="0" type="radio">
+								<label for="edit_job_ctc_hide_no">No</label>
+								</fieldset>
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="edit_job_ctc_other">Other CTC</label>
+								<input type="text" id="edit_job_ctc_other" size="50" name="edit_job_ctc_other" value="" /> 
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="edit_job_no_of_vacancy">NO.of Vacancy</label>
+								<input type="text" id="edit_job_no_of_vacancy" size="50" name="edit_job_no_of_vacancy" value="" /> 
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="edit_job_location">Location</label>
+								<input type="text" id="edit_job_location" size="50" name="edit_job_location" value="" /> 
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="edit_job_UG_qualification">UG Qualification</label>
+								<select id = "edit_job_UG_qualification" name="edit_job_UG_qualification" size="1"/></select>
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="edit_job_PG_qualification">PG Qualification</label>
+								<select id = "edit_job_PG_qualification" name="edit_job_PG_qualification" size="1"/></select>
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="edit_job_qualification_other">Other Qualification</label>
+								<select id = "edit_job_qualification_other" name="edit_job_qualification_other" size="1"/></select>
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="edit_job_candidate_profile">Candidate Profile</label> 
+								<textarea id="edit_job_candidate_profile" size="1000" name="edit_job_candidate_profile" ></textarea> 
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="edit_job_about_company">Company Profile</label> 
+								<textarea id="edit_job_about_company" size="1000" name="edit_job_about_company" ></textarea> 
+							</fieldset>
+							<fieldset class="ui-field-contain">
+							<label for=""></label> 
+						    <input type="submit" data-inline="true" id="update" data-theme="b" name="update" value="Update" class="ui-btn ui-shadow ui-corner-all ui-btn-b ">
+						    <input type="reset" id="" data-inline="true" data-theme="b"  name="" value="cancel" class="ui-btn ui-shadow ui-corner-all ui-btn-b ui-btn-inline ">
+							</fieldset>
+						</form>
+					</div>
+			</div>
+		</div>
+					<!-----Job PROFILE PAGE ------>
+		<div data-role="page" id="candyProfile">
+			<div data-role="header" data-theme="a">
+				<a href="#" data-rel="back" title="Back" class="ui-btn ui-btn-b ui-btn-left ui-corner-all ui-icon-back ui-btn-icon-notext">Back</a>
+                <h3>Candidate Profile</h3>
+		
+			</div><!-- /header -->
+			<div data-role="content">
+				
+					<div>
+						<h3>Basic Information</h3>
+						<div id="basicInfo">
+						</div>
+					</div>
+					<div>
+						<h3>Qualification</h3>
+						<div id="Qual">
+						</div>
+					</div>
+					<div>
+						<h3>Skills</h3>
+						<div id="skills">
+						</div>	
+					</div>
+					<div>
+						<h3>Download resume</h3>
+						<div id="resume">
+						</div>
+					</div>
+				
+			</div><!-- /CONTENT -->
+		</div><!----/PROFILE PAGE-->
+		
+		<div data-role="page" id="edit_profile">
+			<div data-role="header">
+				<h2>Edit Profile</h2>
+				<a href="#dashboard" class="ui-btn ui-btn-b ui-btn-left ui-corner-all ui-icon-carat-l ui-btn-icon-notext" data-transition="slideup" >Close</a>
+			</div>
+			<div data-role="content">
+				<div id = 'profile'>
+					<form name="edit_profile_form" id="edit_profile_form" method="post">
+							<!-------hidden field------->
+						<input type="hidden" id="userId" size="30" name="user_id" value="1"  /> <!--hidden field ends-->
+							<fieldset class="ui-field-contain">
+								<label for="usr_name">Name</label>
+								<input type="text" id="usr_name" size="30" name="usr_name" value="" required /> 
+							</fieldset> 
+							<fieldset class="ui-field-contain">
+								<label for="usr_password">Password</label> 
+								<input type="password" id="usr_password" size="30" name="usr_password"  value=""  /> 
+							</fieldset> 	
+							<fieldset class="ui-field-contain">
+								<label for="c_password">confirm password</label> 
+								<input type="password" id="c_password" size="15" name="c_password" value=""  /> 
+							</fieldset> 
+							<fieldset class="ui-field-contain">
+								<label for="usr_email">Email</label>
+								<input type="email" id="usr_email" size="35" name="usr_email" value="" required />
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="usr_registerDate">Registration date</label>
+								<label id="usr_registerDate"></label>
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<label for="usr_lastvisitDate">Last Visit date</label>
+								<label id="usr_lastvisitDate"></label>
+							</fieldset>
+							<fieldset class="ui-field-contain">
+								<input type="submit" id="saveprofile" name="saveprofile" value="Update" data-theme="b">
+							</fieldset>
+					</form><!---/EDIT PROFILE FORM ENDS----->
+				</div><!--/EDIT PROFILE ENDS -->
+			</div><!----/CONTENT--->
+		</div><!----/EDIT PROFILE PAGE--->
+   </body>	
+</html>
