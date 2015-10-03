@@ -56,7 +56,7 @@
 					<input type="hidden" id="imgId" size="30" name="imgId" value=""/> 
 					<input type="hidden" id="serverUrl" type="html" value="http://lewistechnologies.in/upload.php" />
 					<span class="fileinput-button">
-					<a onclick="selectPicture();" class="ui-btn ui-icon-arrow-u ui-btn-icon-notext ui-corner-all">upload</a>
+					<a onclick="selectPicture();" class="ui-btn ui-icon-arrow-u ui-btn-icon-notext ui-corner-all">Upload</a>
 					<!--<input type="file"  name="userImage" id="userImage" data-role="none" title="upload file" data-ajax="false" accept=".jpg"  required />--></span>
 					</form>
 					</li>
@@ -82,14 +82,13 @@
 					<ul>
 				
 					<a href="#" id="dashposted"><div class="ui-badge-container ui-icon-none"><img src="img/posted.png" alt="Posted Jobs" title="Posted Jobs" width="80px" height="80px">
-					<span class="badge" id="postedcount"></span>Posted Jobs</div></a></li>
+					<span class="badge" id="postedcount"></span></div></a></li>
 					
 						<a href="#" id="dashsaved"><div class="ui-badge-container ui-icon-none"><img src="img/saved.png" alt="Saved Jobs" title="Saved Jobs" width="80px" height="80px">
-					<span class="badge" id="savedcount"></span>Saved Jobs
+					<span class="badge" id="savedcount"></span>
 						
 					</div></a>
 					<a href="#post_job" id="post_a_job"><div class="ui-badge-container"><img src="img/post_a_job.gif" alt="Post a Job" title="Post a Job" width="80px" height="80px">
-					Post a Job
 					<span id="savedcount"></div></a>
 					
 					
@@ -102,7 +101,7 @@
 		<div id="post_job" data-role="page">
 		   <div data-role="header"> 
 			 <a href="#" data-rel="back" data-transition="slide"  class="ui-btn ui-btn-b ui-btn-left ui-corner-all ui-icon-back ui-btn-icon-notext" data-ajax="false">Back</a>
-				<h2> post job  </h2>
+				<h2> Post a job  </h2>
 				
 			</div><!--- page header ends---->
 				
@@ -309,7 +308,7 @@
 			<div id="posted_jobs" data-role="page">
 				<div data-role="header"> 
 					<a href="#dashboard" data-transition="slide"  class="ui-btn ui-btn-b ui-btn-left ui-corner-all ui-icon-back ui-btn-icon-notext" data-ajax="false">Bar</a>
-					<h2> posted job  </h2>
+					<h2> Posted job  </h2>
 				   <div id="" class="searchText hidden">
 				  <input type="text" name="search" id="posted_job_text" value=""  placeholder="Search.." data-mini="true" data-inline="true" data-type="search" class="search" /></div>
 				  <div class="ui-btn-right" ><a href="#" class="searchbtn ui-btn ui-btn-b ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-notext" >search</a>
@@ -324,7 +323,7 @@
 			<div id="saved_jobs" data-role="page">
 				<div data-role="header"> 
 					<a href="#dashboard" data-transition="slide"  class="ui-btn ui-btn-b ui-btn-left ui-corner-all ui-icon-back ui-btn-icon-notext" data-ajax="false">Bar</a>
-					<h2> saved job  </h2>
+					<h2> Saved job  </h2>
 				   <div id="" class="searchText hidden">
 				<input type="text" name="search" id="saved_job_text" value=""  placeholder="Search.." data-mini="true" data-inline="true" data-type="search" class="search" /></div>
 				<div class="ui-btn-right" ><a href="#" class="searchbtn ui-btn ui-btn-b ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-notext" >search</a>
@@ -352,7 +351,7 @@
            	<div id="candylist" data-role="page">
 				<div data-role="header"> 
 					<a href="#job_applied"  class="ui-btn ui-btn-b ui-btn-left ui-corner-all ui-icon-back ui-btn-icon-notext" >Back</a>
-					<h2> candidate list </h2>
+					<h2> Candidate list </h2>
 				 <div id="" class="searchText hidden">
 				<input type="text" name="search" id="candidate_name_text" value=""  placeholder="Search.." data-mini="true" data-inline="true" data-type="search" class="search" /></div>
 				<div class="ui-btn-right" ><a href="#" class="searchbtn ui-btn ui-btn-b ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-notext" >search</a>
@@ -368,8 +367,9 @@
 			<div data-role="header" data-theme="a">
 				<!--<button id="back_teacher" data-theme="a">Back</button>--->
 				<a href="#dashboard" title="Back" class="ui-btn ui-btn-b ui-btn-left ui-corner-all ui-icon-back ui-btn-icon-notext">Back</a>
-                <h1>Profile</h1>
+                <h1>Job Profile</h1>
 				<!--<a href="#studnt_form_edit" id="student_edit" data-theme="a">Edit</a>-->
+				 
 				<a href="" data-id="" id="edit" title="Edit" class="ui-btn ui-btn-b ui-btn-right ui-corner-all ui-icon-edit ui-btn-icon-notext" data-transition="slide">Edit</a>
 			</div><!-- /header -->
 			<div data-role="content">
@@ -406,7 +406,7 @@
 		<div data-role="page" id="edit_job">
 			<div data-role="header">
 					<h1>Job Edit Form</h1>
-					<a href="#" data-rel="back" data-icon="delete" class="ui-btn-right ui-btn-b ui-btn-icon-notext " >close_edit</a>	
+					 <a href="#" data-icon="delete" data-iconpos="notext" data-transition="slideup" data-rel="back" data-id="">Close</a>
 			</div>	
 			<div data-role="content" >
 					<!------EDITING STUDENT------->
