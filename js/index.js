@@ -58,7 +58,7 @@
 				}*/
 			}
 			else if(data.status== '0'){
-				alertpopup("Login Fail:Invalid Username or Password");
+				alert("Login Fail:Invalid Username or Password");
 				/*navigator.notification.alert(
 						'Invalid Username or Password',  // message
 						 null,         // callback
@@ -67,7 +67,7 @@
 				);*/
 				} 
 			else if(data.status== '2'){
-				alertpopup("You are not registered");
+				alert("You are not registered");
 				/*navigator.notification.alert(
 					'You are not registered',  // message
 					null,         // callback
@@ -76,7 +76,7 @@
 					);*/
 			}
 			else if(data.status== '3'){
-				alertpopup("Please Check your UserType");
+				alert("Please Check your UserType");
 				/*navigator.notification.alert(
 					'Please Check your UserType',  // message
 					null,         // callback
@@ -88,7 +88,7 @@
 	
          }
          function onError(data, status)
-         {alert("error");
+         {alert("Connection Error");
 			/*navigator.notification.alert(
 			'Error',  // message
 			null,         // callback
