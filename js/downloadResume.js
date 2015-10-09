@@ -15,10 +15,10 @@ var uri = encodeURI("http://bluesys.in/dev/recruitmentbackend/gulpfile.js");
 var pathArray = uri.split( '/' );
 filename = pathArray[pathArray.length-1];
 var fileURL = store ;
-/*fileTransfer.download(
+fileTransfer.download(
     uri,
 	filePath,
-   // fileURL+"/"+ filename,
+    fileURL+"/"+ filename,
     function(entry) {
        alert("download complete: " + entry.toURL());
 		//navigator.notification.confirm("Downloaded Successfully",null, "Alert", "Ok");
@@ -35,17 +35,7 @@ var fileURL = store ;
             "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
         }
     }
-);*/
-ft.download(
-    "http://bluesys.in/dev/recruitmentbackend/gulpfile.js", // what u download
-    "/sdcard/test.zip",// this is the filename as well complete url
-    function(entry) {
-        alert("success"); alert(JSON.stringify(entry));
-
-    }, 
-    function(err) {
-        alert(err); alert(JSON.stringify(err));
-    }
 );
+
 
 }
