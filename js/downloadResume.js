@@ -11,7 +11,7 @@ store = cordova.file.externalRootDirectory;
 function downloadResume(url){
  alert("inside downloadResume");
 var fileTransfer = new FileTransfer();
-var uri = encodeURI(url);
+var uri = encodeURI("http://bluesys.in/dev/recruitmentbackend/gulpfile.js");
 var pathArray = uri.split( '/' );
 filename = pathArray[pathArray.length-1];
 var fileURL = store ;
