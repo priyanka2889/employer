@@ -49,7 +49,7 @@ function init() {
 	alert( "Checking for data file.")
 
 	store = cordova.file.dataDirectory;
-
+alert(store);
 	//Check for the file. 
 	window.resolveLocalFileSystemURL(store + fileName, appStart, downloadAsset);
 
@@ -57,7 +57,7 @@ function init() {
 
 function downloadAsset() {
 	var fileTransfer = new FileTransfer();
-	console.log("About to start transfer");
+	alert("About to start transfer");
 	fileTransfer.download(assetURL, store + fileName, 
 		function(entry) {
 			alert("Success!");
