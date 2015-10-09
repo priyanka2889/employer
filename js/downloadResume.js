@@ -17,10 +17,11 @@ filename = pathArray[pathArray.length-1];
 var fileURL = store ;
 fileTransfer.download(
     uri,
-    fileURL+"/"+ filename,
+	filePath,
+   // fileURL+"/"+ filename,
     function(entry) {
        alert("download complete: " + entry.toURL());
-		navigator.notification.confirm("Downloaded Successfully",null, "Alert", "Ok");
+		//navigator.notification.confirm("Downloaded Successfully",null, "Alert", "Ok");
 									
     },
     function(error) {
