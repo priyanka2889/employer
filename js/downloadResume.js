@@ -36,24 +36,16 @@ var fileURL = store ;
         }
     }
 );*/
-fileTransfer.download(
-    uri,
-    filePath,
+ft.download(
+    "http://bluesys.in/dev/recruitmentbackend/gulpfile.js", // what u download
+    "/sdcard/test.zip",// this is the filename as well complete url
     function(entry) {
-       alert("download complete: " + entry.fullPath);
-    },
-    function(error) {
-      alert("download error source " + error.source);
-      alert("download error target " + error.target);
-      alert("upload error code" + error.code);
-    },
-    false,
-    {
-        headers: {
-            "Authorization": "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
-        }
+        alert("success"); alert(JSON.stringify(entry));
+
+    }, 
+    function(err) {
+        alert(err); alert(JSON.stringify(err));
     }
 );
-
 
 }
