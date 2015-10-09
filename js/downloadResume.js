@@ -9,7 +9,7 @@ store = cordova.file.externalRootDirectory;
 
 
 function downloadResume(url){
-
+ alert("inside downloadResume");
 var fileTransfer = new FileTransfer();
 var uri = encodeURI(url);
 var pathArray = uri.split( '/' );
@@ -19,14 +19,14 @@ fileTransfer.download(
     uri,
     fileURL+"/"+ filename,
     function(entry) {
-        console.log("download complete: " + entry.toURL());
+       alert("download complete: " + entry.toURL());
 		navigator.notification.confirm("Downloaded Successfully",null, "Alert", "Ok");
 									
     },
     function(error) {
-        console.log("download error source " + error.source);
-        console.log("download error target " + error.target);
-        console.log("upload error code" + error.code);
+       alert("download error source " + error.source);
+      alert("download error target " + error.target);
+       alert("upload error code" + error.code);
     },
     false,
     {

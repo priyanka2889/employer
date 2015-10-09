@@ -1030,6 +1030,7 @@ function set_jobtype(){
 	});
 	 $(document).on("click","#resumedownload",function(){
 		 var url=$(this).attr("data-id");
+		 alert("inside click")
 		 downloadResume(url);
 		 
 	 });
