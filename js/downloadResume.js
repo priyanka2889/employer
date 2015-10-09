@@ -1,4 +1,4 @@
-document.addEventListener("deviceready", init, false);
+/*document.addEventListener("deviceready", init, false);
 var store ;
 function init() {
 
@@ -38,4 +38,38 @@ fileTransfer.download(
 );
 
 
+}
+*/
+var fileName = "http://bluesys.in/dev/recruitmentbackend/gulpfile.js";
+
+function init() {
+	
+	$status = document.querySelector("#status");
+
+	alert( "Checking for data file.")
+
+	store = cordova.file.dataDirectory;
+
+	//Check for the file. 
+	window.resolveLocalFileSystemURL(store + fileName, appStart, downloadAsset);
+
+}
+
+function downloadAsset() {
+	var fileTransfer = new FileTransfer();
+	console.log("About to start transfer");
+	fileTransfer.download(assetURL, store + fileName, 
+		function(entry) {
+			alert("Success!");
+			appStart();
+		}, 
+		function(err) {
+			alert("Error");
+			alert(err);
+		});
+}
+
+//I'm only called when the file exists or has been downloaded.
+function appStart() {
+alert ( "App ready!");
 }
