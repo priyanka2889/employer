@@ -601,7 +601,7 @@ function set_jobtype(){
 					
 					if(item.js_resume_head!="null"||item.js_resume_head!=""){
 						var url = base_url+"resume/"+item.js_userid+".doc";
-				     $("#resume").html("<a class='ui-btn ui-btn-b' data-ajax='false' data-id='"item.js_userid+":"+item.js_name+"'  id='resumedownload'>Click to Download</a>");
+				     $("#resume").html("<a class='ui-btn ui-btn-b' data-ajax='false' data-id='"+item.js_userid+"|"+item.js_name+"'  id='resumedownload'>Click to Download</a>");
 					}
 					else{
 						 $("#resume").html("&nbsp;Resume Not uploaded!!!!");
