@@ -34,7 +34,7 @@ function downloadResume(url,name){
  
                                  fileTransfer.download(
                                            url,
-                                            store,
+                                            store+name+ ".doc",,
                                            function(theFile) {
 											navigator.notification.alert(
 											'Resume Downloaded Successfully \n'+store,  // message
@@ -48,7 +48,7 @@ function downloadResume(url,name){
                                             navigator.notification.alert(
 											JSON.stringify(error),  // message
 											null,         // callback
-											'Success:',            // title
+											'Fail:',            // title
 											'OK'                  // buttonName
 											);
                                            }
@@ -78,7 +78,7 @@ function downloadResume(url,name){
 		navigator.notification.alert(
 		JSON.stringify(evt),  // message
 		null,         // callback
-		'Success:',            // title
+		'Fail:',            // title
 		'OK'                  // buttonName
 		);
     }
