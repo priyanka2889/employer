@@ -10,19 +10,18 @@ function onRequestFileSystemSuccess(fileSystem) {
 } 
 
 function onGetDirectorySuccess(dir) { 
-      alert("Created dir "+dir.name);
+     // alert("Created dir "+dir.name);
 store = cordova.file.externalRootDirectory+"/recruitment/";	  
 } 
 
 function onGetDirectoryFail(error) { 
-     alert("Error creating directory "+JSON.stringify(error)); 
+    // alert("Error creating directory "+JSON.stringify(error)); 
 	 store = cordova.file.externalRootDirectory;
 } 
 }
 
 
-function downloadResume(url){
- alert("store:"+store);
+function downloadResume(url,name){
         window.requestFileSystem(
                      LocalFileSystem.PERSISTENT, 0, 
                      function onFileSystemSuccess(fileSystem) {
@@ -35,15 +34,23 @@ function downloadResume(url){
  
                                  fileTransfer.download(
                                            url,
-                                            store+ "theFile.pdf",
+                                            store+ "name.pdf",
                                            function(theFile) {
-                                           alert("download complete: " + theFile.toURI());
-                                           showLink(theFile.toURI());
+											navigator.notification.alert(
+											'Resume Downloaded Successfully \n'+store,  // message
+											null,         // callback
+											'Success:',            // title
+											'OK'                  // buttonName
+											);
+                                          // showLink(theFile.toURI());
                                            },
                                            function(error) {
-                                           alert("download error source " + error.source);
-                                           alert("download error target " + error.target);
-                                           alert("upload error code: " + error.code);
+                                            navigator.notification.alert(
+											JSON.stringify(error),  // message
+											null,         // callback
+											'Success:',            // title
+											'OK'                  // buttonName
+											);
                                            }
                                            );
                                  }, 
@@ -66,40 +73,12 @@ function downloadResume(url){
     }
  
  
-    function fail(evt) {
-           alert(JSON.stringify(evt));
+    function fail(evt) 
+	{
+		navigator.notification.alert(
+		JSON.stringify(evt),  // message
+		null,         // callback
+		'Success:',            // title
+		'OK'                  // buttonName
+		);
     }
-/*
-var fileName = "http://bluesys.in/dev/recruitmentbackend/gulpfile.js";
-
-function init() {
-	
-	$status = document.querySelector("#status");
-
-	alert( "Checking for data file.")
-
-	store = cordova.file.dataDirectory;
-alert(store);
-	//Check for the file. 
-	window.resolveLocalFileSystemURL(store + fileName, appStart, downloadAsset);
-
-}
-
-function downloadAsset() {
-	var fileTransfer = new FileTransfer();
-	alert("About to start transfer");
-	fileTransfer.download(assetURL, store + fileName, 
-		function(entry) {
-			alert("Success!");
-			appStart();
-		}, 
-		function(err) {
-			alert("Error");
-			alert(err);
-		});
-}
-
-//I'm only called when the file exists or has been downloaded.
-function appStart() {
-alert ( "App ready!");
-}*/
