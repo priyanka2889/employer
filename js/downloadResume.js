@@ -34,7 +34,7 @@ function downloadResume(url,name){
  
                                  fileTransfer.download(
                                            url,
-                                            store+name+ ".doc",,
+                                            store+name+ ".doc",
                                            function(theFile) {
 											navigator.notification.alert(
 											'Resume Downloaded Successfully \n'+store,  // message
