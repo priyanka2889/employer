@@ -44,18 +44,19 @@
 			if(data.status== '1'){
 				localStorage.userId= data.userId;
 				localStorage.username= data.username;
+				window.location.href = 'recruiter_dashbord.html';
 				/*$("#ok").attr("href", 'recruiter_dashbord.html');
 				$("#pop_msg_reset").popup('open');
 				$('#pop_msg_reset p').text('Login Successfully ');
 				*/
-				navigator.notification.confirm("Login"+data.username+" Successfully",registrationCallBack, "Confirmation", "Ok");
+				/*navigator.notification.confirm("Login"+data.username+" Successfully",registrationCallBack, "Confirmation", "Ok");
 					$.mobile.loading('show');
 					function registrationCallBack(button){
 				$.mobile.loading('hide');
 					if(button == 1) {
 						window.location.href = 'recruiter_dashbord.html';
 					}
-				}
+				}*/
 			}
 			else if(data.status== '0'){
 				//alert("Login Fail:Invalid Username or Password");
