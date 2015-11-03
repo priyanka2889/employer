@@ -461,8 +461,8 @@ function set_jobtype(){
 			success: function(data){
 				 $.each(data.savedjoblist,function(i,item) 
 					{
-						$("#saved_jobs_list").append("<li Id="+item.Id+"><a href='#' class='view_profile' data-ajax='false'>"+item.job_title+	"</b><br><p>"+item.job_location+"</p></a></li>");
-						$('#saved_jobs_list li').append("<a href='#'class='job_delete ui-btn ui-btn-b ui-btn-icon-notext ui-icon-trash-o'></a>");
+						$("#saved_jobs_list").append("<li Id="+item.Id+"><a href='#' class='view_profile' data-ajax='false' style='background: transparent;color:#fff;'>"+item.job_title+	"</b><br><p>"+item.job_location+"</p></a></li>");
+						$('#saved_jobs_list li').append("<a href='#'class='job_delete ui-btn ui-btn-b ui-btn-icon-notext ui-icon-trash-o' style='background: transparent;color:#fff;'></a>");
 						$("#saved_jobs_list").listview('refresh');
 					});
 							
@@ -484,8 +484,8 @@ function set_jobtype(){
 						success: function(data){
 							$.each(data.postedjoblist,function(i,item) 
 							{
-								$("#jobs_list").append("<li Id="+item.Id+"><a href='#' class='view_profile' data-ajax='false'>"+item.job_title+	"</b><br><p>"+item.job_location+"</p></a></li>");
-								$('#jobs_list li').append("<a href='#'class='job_delete ui-btn ui-btn-b ui-btn-icon-notext ui-icon-trash-o'></a>");
+								$("#jobs_list").append("<li Id="+item.Id+"><a href='#' class='view_profile' data-ajax='false' style='background: transparent;color:#fff;'>"+item.job_title+	"</b><br><p>"+item.job_location+"</p></a></li>");
+								$('#jobs_list li').append("<a href='#'class='job_delete ui-btn  ui-btn-icon-notext ui-icon-trash-o' style='background: transparent;' ></a>");
 								$("#jobs_list").listview('refresh');
 							});
 												
@@ -517,7 +517,7 @@ function set_jobtype(){
 								var appliedids = job_applied.split('|');
 								count = appliedids.length;
 							    }
-								$("#job_applied_list").append("<li Id="+item.Id+"  data="+item.job_applied+"><a class='list_applied'>"+item.job_title+"</b><br><p>Applied :"+count+"</p></a></li>");
+								$("#job_applied_list").append("<li Id="+item.Id+"  data="+item.job_applied+"><a class='list_applied' style='background: transparent;'>"+item.job_title+"</b><br><p>Applied :"+count+"</p></a></li>");
 							
 
 				    $("#job_applied_list").listview('refresh');

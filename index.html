@@ -19,9 +19,15 @@
 				<script src="js/rc4.js"></script>
 				<script src="js/common.js"></script>
 				<script src="js/index.js"></script>
-					<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+				<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 						<!--<script type="text/javascript" charset="utf-8" src="cordova.js"></script>-->
-				
+				<link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+				<style>
+				html *
+				{
+				font-family: 'Quicksand', sans-serif !important;
+				}
+				</style>
 				</head> 
 	<body> 
 	<div data-role="page" id="login_page">
@@ -33,9 +39,9 @@
 		  	<form id="login" method="post">
 					<h3>Sign In</h3>
 					<label for="username">User Name</label>
-					<input type="text" name="username" id="username" value="" required />
+					<input type="text" name="username" id="username" value="" placeholder="UserName" required />
 					<label for="txt-password">Password</label>
-					<input type="password" name="password" id="password" value="" required />
+					<input type="password" name="password" id="password" value="" placeholder="Password" required />
 					<input type="hidden" name="usr_usertype" id="usr_usertype" value="2" />
 					<fieldset data-role="controlgroup">
 						<input type="checkbox" name="chck-rememberme" id="chck-rememberme" checked="">

@@ -29,19 +29,22 @@
 				<script type="text/javascript" src="js/downloadResume.js"></script>
 					<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 				<!-- <script type="text/javascript" charset="utf-8" src="cordova.js"></script>-->
+				<link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+				<style>
+				html *
+				{
+				font-family: 'Quicksand', sans-serif !important;
+				}
+				</style>
 	</head>
-		<style>
-		
 	
-</style>
-		
 	 <body onload="init();">
 		<!-----companies list ----->
 		<div id="dashboard" data-role="page">
 				
-			<div data-role="header" class="header"> 
+			<div data-role="header"> 
 			<a href="#left_panel" data-transition="slide"  data-direction="reverse" class="ui-btn ui-btn-b ui-btn-left ui-corner-all ui-icon-bars ui-btn-icon-notext" data-ajax="false">Bar</a>
-				<h2> Companies  </h2>
+				<h1> Companies  </h1>
 				<div class="ui-btn-right" id="user" data-role="" data-type="horizontal" class="ui-corner-all" style="color:white; font-weight:normal; margin-top:10px;">
 				 username
 				</div>
@@ -54,27 +57,27 @@
 			     <ul data-role="listview">
 				   <li data-icon="false">
 					<div class="img-preview" >
-					<img src="" alt="Profile Pic" id="profilePic" style="height:100px;width:100px;" ></div>
+					<a href="#" onclick="selectPicture();">
+					<img src="" alt="Profile Pic" id="profilePic" style="height:100px;width:100px;border-radius:50%"></a></div>
 					<form class="frmUpload" action="" method="post" enctype="multipart/form-data" >
 					<input type="hidden" id="imgId" size="30" name="imgId" value=""/> 
-					<input type="hidden" id="serverUrl" type="html" value="http://lewistechnologies.in/upload.php" />
-					<span class="fileinput-button">
-					<a onclick="selectPicture();" class="ui-btn ui-icon-arrow-u ui-btn-icon-notext ui-corner-all">Upload</a>
+					<input type="hidden" id="serverUrl" type="html" value="http://bluesys.in/dev/recruitmentbackend/upload.php"" />
+								
 					<!--<input type="file"  name="userImage" id="userImage" data-role="none" title="upload file" data-ajax="false" accept=".jpg"  required />--></span>
 					</form>
 					</li>
-					<li data-rel="close"><a href="#dashboard" data-transition="slide" class="ui-btn ui-shadow  ui-icon-none " >Dashboard</a></li>
-					<li data-rel="close"><a href="#post_job" data-transition="slide" class="ui-btn ui-shadow  ui-icon-none " >Post Jobs </a></li>
+					<li data-rel="close"><a href="#dashboard" data-transition="slide" class="ui-btn ui-icon-home ui-btn-icon-left" >Home</a></li>
+					<li data-rel="close"><a href="#post_job" data-transition="slide" class="ui-btn ui-icon-briefcase ui-btn-icon-left" >Post Jobs </a></li>
 					<li><a href="#" id="Jobs"  class="ui-btn ui-shadow ui-icon-carat-d ui-btn-icon-right"  >Jobs</a></li>
 					<div id="jobType" class="hidden">
 					  <ul data-role="listview" >
-					  <li><a id="posted"class="ui-btn ui-shadow  ui-icon-none" data-transition="slide" data-ajax="false">Posted Jobs</a></li>
-					  <li><a id="saved" class="ui-btn ui-shadow  ui-icon-none" data-transition="slide"  data-ajax="false" >Saved Jobs</a></li>
+					  <li><a id="posted" class="ui-btn ui-icon-navigation ui-btn-icon-left" data-transition="slide" data-ajax="false">Posted Jobs</a></li>
+					  <li><a id="saved"class="ui-btn ui-icon-save ui-btn-icon-left"data-transition="slide"  data-ajax="false" >Saved Jobs</a></li>
 					  </ul>
 					</div>
-					<li data-rel="close"><a href="#" id="applied" data-transition="slide" class="ui-btn ui-shadow   ui-icon-none ">Applied</a></li>
-					<li data-rel="close"><a href="#edit_profile" data-transition="slide" class="ui-btn ui-shadow   ui-icon-none ">Edit Profile</a></li>
-					<li><a href="#" id="logout"  data-ajax="false" class="ui-btn ui-shadow  ui-icon-none "  >Logout</a></li>
+					<li data-rel="close"><a href="#" id="applied" data-transition="slide" class="ui-btn ui-icon-check ui-btn-icon-left">Applied</a></li>
+					<li data-rel="close"><a href="#edit_profile" data-transition="slide" class="ui-btn ui-icon-edit ui-btn-icon-left">Edit Profile</a></li>
+					<li><a href="#" id="logout"  data-ajax="false" class="ui-btn ui-icon-power ui-btn-icon-left"  >Logout</a></li>
 				 </ul>
 			  </div>
 			
@@ -127,15 +130,15 @@
 						    </fieldset>
 							<fieldset class="ui-field-contain">
 								<label for="job_title">Job Title</label>
-								<input type="text" id="job_title" size="50" name="job_title" value="" /> 
+								<input type="text" id="job_title" size="50" name="job_title" value="" placeholder="Job Title" /> 
 							</fieldset>
 							<fieldset class="ui-field-contain">
 								<label for="job_description">job Description</label> 
-								<textarea id="job_description" size="1000" name="job_description" ></textarea> 
+								<textarea id="job_description" size="1000" name="job_description" placeholder="Job Description" ></textarea> 
 							</fieldset>
 							<fieldset class="ui-field-contain">
 								<label for="job_keywords">Keyskills</label>
-								<input type="text" id="job_keywords" size="50" name="job_keywords" value="" /> 
+								<input type="text" id="job_keywords" size="50" name="job_keywords" value="" placeholder="Key Skills" /> 
 							</fieldset>
 							<fieldset class="ui-field-contain">
 								<label for="job_min_exp">Minimum Experience(yr.)</label>
@@ -257,7 +260,7 @@
 								</select>
 							</fieldset>
 							<fieldset class="ui-field-contain">
-								<label>CTC Status</label>
+								<label>Hide CTC</label>
 								<fieldset data-role="controlgroup" data-mini="true" data-type="horizontal">
 								<input name="job_ctc_hide" id="job_ctc_hide_yes" value="1" type="radio">
 								<label for="job_ctc_hide_yes">Yes</label>
@@ -267,15 +270,15 @@
 							</fieldset>
 							<fieldset class="ui-field-contain">
 								<label for="job_ctc_other">Other CTC</label>
-								<input type="text" id="job_ctc_other" size="50" name="job_ctc_other" value="" /> 
+								<input type="text" id="job_ctc_other" size="50" name="job_ctc_other" value="" placeholder="CTC"/> 
 							</fieldset>
 							<fieldset class="ui-field-contain">
 								<label for="job_no_of_vacancy">No.Of Vacancy</label>
-								<input type="text" id="job_no_of_vacancy" size="50" name="job_no_of_vacancy" value="" /> 
+								<input type="text" id="job_no_of_vacancy" size="50" name="job_no_of_vacancy" value="" placeholder="No.Of Vacancies" /> 
 							</fieldset>
 							<fieldset class="ui-field-contain">
 								<label for="job_location">Location</label>
-								<input type="text" id="job_location" size="50" name="job_location" value="" /> 
+								<input type="text" id="job_location" size="50" name="job_location" value=""  placeholder="Job Location"/> 
 							</fieldset>
 							<fieldset class="ui-field-contain">
 								<label for="job_UG_qualification">UG Qualification</label>
@@ -291,11 +294,11 @@
 							</fieldset>
 							<fieldset class="ui-field-contain">
 								<label for="job_candidate_profile">Candidate Profile</label> 
-								<textarea id="job_candidate_profile" size="1000" name="job_candidate_profile" ></textarea> 
+								<textarea id="job_candidate_profile" size="1000" name="job_candidate_profile" placeholder="Candidate Profile"></textarea> 
 							</fieldset>
-							<fieldset class="ui-field-contain">
+							<fieldset class="ui-field-contain"> 
 								<label for="job_about_company">Company Profile</label> 
-								<textarea id="job_about_company" size="1000" name="job_about_company" ></textarea> 
+								<textarea id="job_about_company" size="1000" name="job_about_company" placeholder="Company Profile" ></textarea> 
 							</fieldset>
 							<fieldset class="ui-field-contain">
 							<label for="job_about_company"></label> 
@@ -313,12 +316,12 @@
 					<a href="#dashboard" data-transition="slide"  class="ui-btn ui-btn-b ui-btn-left ui-corner-all ui-icon-back ui-btn-icon-notext" data-ajax="false">Bar</a>
 					<h2> Posted job  </h2>
 				   <div id="" class="searchText hidden">
-				  <input type="text" name="search" id="posted_job_text" value=""  placeholder="Search.." data-mini="true" data-inline="true" data-type="search" class="search" /></div>
+				  <input type="text" name="search" id="posted_job_text" value=""  placeholder="Search.." data-mini="true" data-inline="true" data-type="search" class="search" style="background:#fff;"/></div>
 				  <div class="ui-btn-right" ><a href="#" class="searchbtn ui-btn ui-btn-b ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-notext" >search</a>
 				  </div>
 				 </div><!--- page header ends---->
 				<div data-role="content">
-					<ul data-role="listview"  id="jobs_list"></ul></div><!-- /content -->
+					<ul data-role="listview"  id="jobs_list" style='background-image: url("css/images/list_bg1.jpg");'></ul></div><!-- /content -->
 			
 			</div><!--page Ends-->
 			
@@ -328,12 +331,12 @@
 					<a href="#dashboard" data-transition="slide"  class="ui-btn ui-btn-b ui-btn-left ui-corner-all ui-icon-back ui-btn-icon-notext" data-ajax="false">Bar</a>
 					<h2> Saved job  </h2>
 				   <div id="" class="searchText hidden">
-				<input type="text" name="search" id="saved_job_text" value=""  placeholder="Search.." data-mini="true" data-inline="true" data-type="search" class="search" /></div>
+				<input type="text" name="search" id="saved_job_text" value=""  placeholder="Search.." data-mini="true" data-inline="true" data-type="search" class="search" style="background:#fff;" /></div>
 				<div class="ui-btn-right" ><a href="#" class="searchbtn ui-btn ui-btn-b ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-notext" >search</a>
 				</div>
 				</div><!--- page header ends---->
 				<div data-role="content">
-					<ul data-role="listview"  id="saved_jobs_list"></ul></div><!-- /content -->
+					<ul data-role="listview"  id="saved_jobs_list" style='background-image: url("css/images/list_bg1.jpg");'></ul></div><!-- /content -->
 			
 			</div><!--page Ends-->
 			
@@ -343,12 +346,12 @@
 					<a href="#dashboard" data-transition="slide"  class="ui-btn  ui-btn-b ui-btn-left ui-corner-all ui-icon-back ui-btn-icon-notext" data-ajax="false">Bar</a>
 					<h2> Applied job  </h2>
 				   <div id="" class="searchText hidden">
-				<input type="text" name="search" id="applied_job_text" value=""  placeholder="Search.." data-mini="true" data-inline="true" data-type="search" class="search" /></div>
+				<input type="text" name="search" id="applied_job_text" value=""  placeholder="Search.." data-mini="true" data-inline="true" data-type="search" class="search" style="background:#fff;" /></div>
 				<div class="ui-btn-right" ><a href="#" class="searchbtn ui-btn ui-btn-b ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-notext" >search</a>
 				</div>
 				</div><!--- page header ends---->
 				<div data-role="content">
-					<ul data-role="listview" id="job_applied_list"></ul></div><!-- /content -->
+					<ul data-role="listview" id="job_applied_list" style='background-image: url("css/images/list_bg1.jpg");'></ul></div><!-- /content -->
 			</div><!--page Ends-->
 			
            	<div id="candylist" data-role="page">
